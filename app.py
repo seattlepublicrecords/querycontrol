@@ -60,11 +60,11 @@ def for_socrata_owned_datasets():
     conn = psycopg2.connect(conn_string)
     cur = conn.cursor()
     cur.execute(query)
-    conn.close()
+    
     d['results'] = [dict((cur.description[i][0], value) \
            for i, value in enumerate(row)) for row in cur.fetchall()]
     d['number_of_rows'] = len(d['results'])
-    
+    conn.close()
     return Response(json.dumps(d), mimetype='application/json')
 
 @app.errorhandler(404)
