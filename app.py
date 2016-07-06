@@ -23,7 +23,7 @@ psql_host = os.environ.get('psql_host')
 psql_port = os.environ.get('psql_port')
 psql_username = os.environ.get('psql_username')
 psql_password = os.environ.get('psql_password')
-psql_dbname = os.eniron.get('psql_dbname')
+psql_dbname = os.environ.get('psql_dbname')
 import sys
 import logging
 
