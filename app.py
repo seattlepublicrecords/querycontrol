@@ -51,6 +51,14 @@ def about():
 import requests
 import re
 
+def json_serial(obj):
+    """JSON serializer for objects not serializable by default json code"""
+
+    if isinstance(obj, datetime):
+        serial = obj.isoformat()
+        return serial
+    raise TypeError ("Type not serializable")
+
 @app.route('/query/')
 @cross_origin()
 def for_socrata_owned_datasets():
@@ -65,7 +73,7 @@ def for_socrata_owned_datasets():
            for i, value in enumerate(row)) for row in cur.fetchall()]
     d['number_of_rows'] = len(d['results'])
     conn.close()
-    return Response(json.dumps(d), mimetype='application/json')
+    return Response(json.dumps(d, default=json_serial), mimetype='application/json')
 
 @app.errorhandler(404)
 def page_not_found(error):
