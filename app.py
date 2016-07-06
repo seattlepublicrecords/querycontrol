@@ -16,6 +16,7 @@ from requests.auth import HTTPBasicAuth
 import re
 import json
 import urllib
+import psycopg2
 from datetime import datetime
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
 psql_host = os.environ.get('psql_host')
