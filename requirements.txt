@@ -6,8 +6,6 @@ flask-cors
 requests
 flask-sqlalchemy
 psycopg2
-sodapy
-git+https://github.com/yhat/pandasql.git
 
 # ----------------------
 # Testing
