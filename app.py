@@ -24,7 +24,6 @@ psql_port = os.environ.get('psql_port')
 psql_username = os.environ.get('psql_username')
 psql_password = os.environ.get('psql_password')
 psql_dbname = os.eniron.get('psql_dbname')
-"psql_host": "seattlepublicrecords.cnrusrhnfk2f.us-west-2.rds.amazonaws.com", "psql_port": "5432", "psql_username": "spradmin", "psql_dbname": "seattlepublicrecords"
 import sys
 import logging
 
