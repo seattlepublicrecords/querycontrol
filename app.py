@@ -17,6 +17,7 @@ import re
 import json
 import urllib
 import psycopg2
+import psycopg2.extras
 from datetime import datetime
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
 psql_host = os.environ.get('psql_host')
