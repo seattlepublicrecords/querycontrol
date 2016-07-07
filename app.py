@@ -66,7 +66,7 @@ def for_socrata_owned_datasets():
     d = {'query': query}
     conn_string = "dbname='%s' user='%s' host='%s' password='%s' port='%s'" % (psql_dbname, psql_username, psql_host, psql_password, psql_port)
     conn = psycopg2.connect(conn_string)
-    cur = conn.cursor()
+    cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
     cur.execute(query)
     d['fields'] = [desc[0] for desc in cur.description]
     d['rows'] = list(cur.fetchall())
