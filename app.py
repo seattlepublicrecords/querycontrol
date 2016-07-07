@@ -68,7 +68,7 @@ def for_socrata_owned_datasets():
     conn = psycopg2.connect(conn_string)
     cur = conn.cursor()
     cur.execute(query)
-    
+    d['fields'] = [desc[0] for desc in cur.description]
     d['rows'] = [dict((cur.description[i][0], value) \
            for i, value in enumerate(row)) for row in cur.fetchall()]
     d['number_of_rows'] = len(d['rows'])
