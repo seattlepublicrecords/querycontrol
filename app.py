@@ -71,7 +71,6 @@ def for_socrata_owned_datasets():
     d['fields'] = [desc[0] for desc in cur.description]
     d['rows'] = [row for row in cur.fetchall()]
     d['number_of_rows'] = len(d['rows'])
-    d['fields'] = d['rows'][0].keys() if d['rows'] else []
     conn.close()
     return Response(json.dumps(d, default=json_serial), mimetype='application/json')
 
