@@ -69,9 +69,10 @@ def for_socrata_owned_datasets():
     cur = conn.cursor()
     cur.execute(query)
     
-    d['results'] = [dict((cur.description[i][0], value) \
+    d['rows'] = [dict((cur.description[i][0], value) \
            for i, value in enumerate(row)) for row in cur.fetchall()]
     d['number_of_rows'] = len(d['results'])
+    d['fields'] = d['rows'][0].keys() if d['rows']
     conn.close()
     return Response(json.dumps(d, default=json_serial), mimetype='application/json')
 
