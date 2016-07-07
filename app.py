@@ -71,7 +71,7 @@ def for_socrata_owned_datasets():
     cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
     cur.execute(query)
     d['fields'] = [desc[0] for desc in cur.description]
-    d['rows'] = collections.OrderedDict([(col, row[col) for row in cur.fetchall() for col in d[fields]])
+    d['rows'] = collections.OrderedDict([(col, row[col]) for row in cur.fetchall() for col in d[fields]])
     d['number_of_rows'] = len(d['rows'])
     conn.close()
     return Response(json.dumps(d, default=json_serial), mimetype='application/json')
