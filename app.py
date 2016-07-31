@@ -59,7 +59,7 @@ def json_serial(obj):
     if isinstance(obj, datetime):
         serial = obj.isoformat()
         return serial
-    raise TypeError ("Type not serializable")
+    raise TypeError ("Type not serializable %s" % (type(obj)))
 
 @app.route('/query/')
 @cross_origin()
