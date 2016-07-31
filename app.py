@@ -19,7 +19,7 @@ import urllib
 import psycopg2
 import psycopg2.extras
 import collections
-from datetime import datetime
+import datetime
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'this_should_be_configured')
 psql_host = os.environ.get('psql_host')
 psql_port = os.environ.get('psql_port')
@@ -56,7 +56,7 @@ import re
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
 
-    if isinstance(obj, datetime):
+    if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.time):
         serial = obj.isoformat()
         return serial
     raise TypeError ("Type not serializable %s" % (type(obj)))
