@@ -56,7 +56,7 @@ import re
 def json_serial(obj):
     """JSON serializer for objects not serializable by default json code"""
 
-    if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.time):
+    if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.time) or isinstance(obj, datetime.date):
         serial = obj.isoformat()
         return serial
     raise TypeError ("Type not serializable %s" % (type(obj)))
